@@ -624,32 +624,9 @@
 
   // ── Social login ──────────────────────────────────────
   function socialLogin(provider) {
-
-    if (provider === "Google") {
-
-        google.accounts.id.initialize({
-            client_id: "963982507060-coacuhe3rqpgq34jqgl4nlpb3j6f7m46.apps.googleusercontent.com",
-            callback: handleCredentialResponse
-        });
-
-        google.accounts.id.prompt();
-
-    } else if (provider === "GitHub") {
-
-        toast("GitHub login coming soon!", "success");
-    }
+    toast(`🔗 Connecting to ${provider}...`, "success");
+    setTimeout(() => toast(`✅ ${provider} login coming soon!`, "success"), 1500);
 }
-
-function handleCredentialResponse(response) {
-
-    console.log(response);
-
-    toast("Google Login Successful!", "success");
-
-    // Redirect after login
-    window.location.href = "home.html";
-}
-
   // ── Main login ────────────────────────────────────────
   function handleLogin() {
     const emailOk = validateEmail();
