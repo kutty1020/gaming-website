@@ -15,7 +15,10 @@
                 <div class="logo_img"></div>
                 <h3>Jayanth</h3>
             </div>
-            <div class="head_2">
+            <button class="menu_toggle" id="menu_toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </button>
+            <div class="head_2" id="head_2">
                 <a class="head_a active" href="index.html">Home</a>
                 <a class="head_a" target="_blank" href="shop.html">Our Shop</a>
                 <a class="head_a" href="javascript:void(0);">Product Details</a>
@@ -310,5 +313,29 @@
             <p class="last_4">Copyright 2048 LUGX Gaming Company.All rights reserved. Design:TemplateMo</p>
         </div>
     </div>
+
+    <script>
+        // Mobile nav toggle
+        const menuToggle = document.getElementById('menu_toggle');
+        const headNav = document.getElementById('head_2');
+        menuToggle.addEventListener('click', function () {
+            const isOpen = headNav.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            menuToggle.innerHTML = isOpen
+                ? '<i class="fa fa-times" aria-hidden="true"></i>'
+                : '<i class="fa fa-bars" aria-hidden="true"></i>';
+        });
+
+        // Close mobile nav when a link is clicked
+        document.querySelectorAll('.head_a, .head_aa').forEach(function (el) {
+            el.addEventListener('click', function () {
+                if (window.innerWidth <= 768) {
+                    headNav.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.innerHTML = '<i class="fa fa-bars" aria-hidden="true"></i>';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
